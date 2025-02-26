@@ -1,4 +1,3 @@
-langchain==
 langchain_community==0.3.18
 numpy==2.2.3
 openai==1.64.0
