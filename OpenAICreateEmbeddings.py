@@ -4,7 +4,7 @@ import openai
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 
-openai.api_key = "mykey"
+openai.api_key = os.environ['OPEN_AI_KEY']
 embeddings_model = "text-embedding-3-large"
 path = "C:/Users/yugan/Documents/Science Fair/Sampledocs/"
 data_path = "C:/Users/yugan/Documents/Science Fair/parsed_pdf_docs_with_embeddings.csv"
