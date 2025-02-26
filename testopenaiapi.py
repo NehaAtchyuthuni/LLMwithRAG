@@ -18,7 +18,7 @@ import tkinter as tk
 
 
 # Set your OpenAI API key
-openai.api_key = "mykey"
+openai.api_key = os.environ['OPEN_AI_KEY']
 
 #data_path = "C:/Users/yugan/Documents/Science Fair/parsed_pdf_docs_with_embeddings.csv"
 data_path = "C:/Users/yugan/Documents/Science Fair/parsed_pdf_docs_with_embeddings -backup-withoutCorrectivedoc.csv"
