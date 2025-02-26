@@ -17,7 +17,7 @@ from ast import literal_eval
 import tkinter as tk
 
 # Set your OpenAI API key
-openai.api_key = "mykey"
+openai.api_key = os.environ['OPEN_AI_KEY']
 
 # Open ai model
 model = "gpt-4o-mini"
