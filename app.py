@@ -20,7 +20,7 @@ from ast import literal_eval
 
 openai.api_key = os.environ['OPEN_AI_KEY']
 
-data_path = "C:/Users/yugan/Documents/Science Fair/parsed_pdf_docs_with_embeddings -backup-withoutCorrectivedoc.csv"
+data_path = "/parsed_pdf_docs_with_embeddings -backup-withoutCorrectivedoc.csv"
 df = pd.read_csv(data_path)
 df["embeddings"] = df.embeddings.apply(literal_eval).apply(np.array)
 embeddings_model = "text-embedding-3-large"
