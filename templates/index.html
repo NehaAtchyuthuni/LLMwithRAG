@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Neha's AI Counselor with RAG</title>
+</head>
+<body>
+    <form method="POST">
+        <textarea name="text" rows="25" cols="100"> {% if response %}
+            {{ response }}
+    {% endif %}</textarea>
+        <br>
+        <input name="question" type="text" rows="2" cols="30">
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
