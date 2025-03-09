@@ -2,7 +2,7 @@ numpy==2.2.3
 openai==1.64.0
 pandas==2.2.3
 pdf2image==1.17.0
-pdfminer==20191125
+pdfminer
 rich==13.9.4
 scikit_learn==1.6.1
 flask==3.1.0
