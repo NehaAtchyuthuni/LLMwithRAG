@@ -20,7 +20,7 @@ from ast import literal_eval
 openai.api_key = os.environ['OPEN_AI_KEY']
 
 current_dir = os.getcwd()
-df = pd.read_csv(os.path.join(current_dir,'parsed_pdf_docs_text_embedding_3_large.csv'))
+df = pd.read_csv(os.path.join(current_dir,'parsed_pdf_docs_text_embedding_3_large_chunkoverlap200.csv'))
 df["embeddings"] = df.embeddings.apply(literal_eval).apply(np.array)
 embeddings_model = "text-embedding-3-large"
 
