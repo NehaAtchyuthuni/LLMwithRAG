@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Neha's AI Counselor with RAG</title>
+    <title>Neha's AI Counselor LLM with RAG</title>
+    <script>
+        document
+            .addEventListener("DOMContentLoaded",
+                function () {
+
+                    // Code to be executed when the DOM is ready
+                    var textArea = document.getElementById("text-area");
+                    textArea.scrollTop = textArea.scrollHeight;  // Scroll to the bottom
+                });
+
+    </script>
 </head>
 <body>
     <form method="POST">
-        <textarea name="text" rows="25" cols="100"> {% if response %}
-            {{ response }}
-    {% endif %}</textarea>
-        <br>
-        <input name="question" type="text" rows="2" cols="30">
-        <input type="submit" value="Submit">
+        <div align="center">
+            <h2>Neha's AI Counselor LLM with RAG</h2>
+            <textarea id="text-area" name="text" rows="30" cols="150" style="background-color:#90ee90"> {% if response %}
+                {{ response }}
+                {% endif %}
+            </textarea>
+            <br><br><br>
+            <input name="question" type="text" size="100">
+            <input type="submit" value="Submit">
+        </div>
     </form>
 
 </body>
