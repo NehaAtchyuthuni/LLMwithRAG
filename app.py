@@ -21,16 +21,14 @@ from ast import literal_eval
 openai.api_key = os.environ['OPEN_AI_KEY']
 
 current_dir = os.getcwd()
-
-data_path = "parsed_pdf_docs_with_embeddings -backup-withoutCorrectivedoc.csv"
-df = pd.read_csv(os.path.join(current_dir,'parsed_pdf_docs_with_embeddings -backup-withoutCorrectivedoc.csv'))
+df = pd.read_csv(os.path.join(current_dir,'parsed_pdf_docs_text_embedding_3_large.csv'))
 df["embeddings"] = df.embeddings.apply(literal_eval).apply(np.array)
 embeddings_model = "text-embedding-3-large"
 
 
 def get_embeddings(text):
     embeddings = openai.embeddings.create(
-        model="text-embedding-3-small",
+        model=embeddings_model,
         input=text,
         encoding_format="float"
     )
@@ -38,13 +36,12 @@ def get_embeddings(text):
 
 
 system_prompt = '''
-    You will be provided with an input prompt and content as context that can be used to reply to the prompt.
-
+ You will be provided with an input prompt and content as context that can be used to reply to the prompt.
     You will do the following things:
     1. First, you will internally assess whether the content provided is relevant to reply to the input prompt. 
     2. If the content is relevant, use elements found in the content to craft a reply to the input prompt.
-    3. If the content is not relevant, do not use your own knowledge base, and say that you don't know the answer. 
-    4. Answer or reply should not exceed 50 words approximately and should be in bullet format. 
+    3. If the content is not relevant, use your knowledge base to answer. 
+    4. Answer or reply should not exceed 150 words approximately. 
     5. Please list the source links at the end
 '''
 model = "gpt-4o-mini"
@@ -105,7 +102,7 @@ def index():
     if request.method == 'POST':
         question = request.form['question']
         combined = request.form['text'] + '\nQuestion: '+ question
-        matching_content = search_content(df, question, 1)
+        matching_content = search_content(df, question,3)
 
         for i, match in matching_content.iterrows():
             print("Similarity:", get_similarity(match))
